@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clothes Clearouts – Turn Your Clothes Into Cash | Watford</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #b8e4f7;
+    --green: #7cc87a;
+    --yellow: #f9d84a;
+    --pink: #f7a8c4;
+    --cream: #fffbf0;
+    --dark: #2d4a2d;
+    --text: #3a3a3a;
+    --orange: #f4845f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--sky);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--cream);
+    border-bottom: 3px solid var(--dark);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 0 var(--green);
+  }
+
+  .nav-logo {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    color: var(--dark);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--dark);
+    text-decoration: none;
+    background: var(--sky);
+    border: 2px solid var(--dark);
+    border-radius: 20px;
+    padding: 6px 16px;
+    transition: all 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--yellow);
+    transform: translateY(-2px);
+  }
+
+  /* PAGE SECTIONS */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 48px 24px 32px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '☁️';
+    position: absolute;
+    font-size: 4rem;
+    left: 5%;
+    top: 20px;
+    opacity: 0.6;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '☁️';
+    position: absolute;
+    font-size: 3rem;
+    right: 8%;
+    top: 40px;
+    opacity: 0.5;
+    animation: float 5s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--green);
+    border: 2.5px solid var(--dark);
+    border-radius: 30px;
+    padding: 8px 22px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 0 var(--dark);
+  }
+
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 16px;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+  }
+
+  .hero h1 span {
+    color: #2e8b2e;
+    display: inline-block;
+    position: relative;
+  }
+
+  .hero p {
+    font-size: 1.15rem;
+    font-weight: 600;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--green);
+    color: var(--dark);
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.25rem;
+    padding: 14px 36px;
+    border-radius: 50px;
+    border: 3px solid var(--dark);
+    box-shadow: 4px 4px 0 var(--dark);
+    text-decoration: none;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+
+  .cta-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--dark);
+  }
+
+  /* QUICK STATS */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 0 24px 40px;
+  }
+
+  .stat-pill {
+    background: var(--cream);
+    border: 2.5px solid var(--dark);
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--dark);
+    box-shadow: 3px 3px 0 var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* SECTION CARDS */
+  .section {
+    max-width: 800px;
+    margin: 0 auto 32px;
+    padding: 0 20px;
+  }
+
+  .card {
+    background: var(--cream);
+    border: 3px solid var(--dark);
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 6px 6px 0 var(--dark);
+    margin-bottom: 24px;
+  }
+
+  .card h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* HOW IT WORKS STEPS */
+  .steps {
+    display: grid;
+    gap: 16px;
+  }
+
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--sky);
+    border: 2px solid var(--dark);
+    border-radius: 16px;
+    padding: 16px 20px;
+  }
+
+  .step-num {
+    background: var(--yellow);
+    border: 2px solid var(--dark);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    color: var(--dark);
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0 var(--dark);
+  }
+
+  .step-text strong {
+    display: block;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 2px;
+  }
+
+  .step-text span {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 600;
+  }
+
+  /* WHAT WE TAKE */
+  .take-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 500px) {
+    .take-grid { grid-template-columns: 1fr; }
+  }
+
+  .take-box {
+    border: 2.5px solid var(--dark);
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .take-box.yes { background: #e8f7e8; }
+  .take-box.no { background: #fdecea; }
+
+  .take-box h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--dark);
+  }
+
+  .take-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .take-list li {
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .take-list li::before {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .take-box.yes .take-list li::before { content: '✅'; }
+  .take-box.no .take-list li::before { content: '❌'; }
+
+  /* NOT SURE BOX */
+  .not-sure {
+    background: #fff9e6;
+    border: 2.5px dashed var(--dark);
+    border-radius: 16px;
+    padding: 18px 22px;
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--dark);
+    text-align: center;
+  }
+
+  /* CONTACT PAGE */
+  .contact-hero {
+    text-align: center;
+    padding: 48px 24px 32px;
+  }
+
+  .contact-hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .contact-hero p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark);
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+
+  .email-btn {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--dark);
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: 3px solid var(--dark);
+    box-shadow: 4px 4px 0 var(--dark);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+
+  .email-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--dark);
+  }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    border: 2.5px solid var(--dark);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--cream);
+  }
+
+  .faq-q {
+    padding: 16px 20px;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    background: var(--cream);
+    transition: background 0.15s;
+  }
+
+  .faq-q:hover { background: #f0f7ff; }
+
+  .faq-q .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 20px 16px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    border-top: 2px solid #e8e8e8;
+    padding-top: 14px;
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--dark);
+    border-top: 3px solid var(--dark);
+    background: var(--cream);
+    margin-top: 40px;
+  }
+
+  footer a {
+    color: #2e8b2e;
+    text-decoration: none;
+    font-weight: 800;
+  }
+
+  .area-banner {
+    max-width: 800px;
+    margin: 0 auto 28px;
+    padding: 0 20px;
+  }
+
+  .area-banner-inner {
+    background: var(--green);
+    border: 3px solid var(--dark);
+    border-radius: 20px;
+    padding: 18px 28px;
+    box-shadow: 5px 5px 0 var(--dark);
+    text-align: center;
+  }
+
+  .area-banner-inner p {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.25rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .area-banner-inner span {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--dark);
+    opacity: 0.85;
+  }
+
+  .sparkles {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">👗 Clothes Clearouts</a>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a>
+    <a href="#" onclick="showPage('contact')" id="nav-contact">Contact & FAQs</a>
+  </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+
+  <div class="hero">
+    <h1>Turn your clothes<br>into <span>cash</span> 💰</h1>
+    <div class="hero-badge">📍 Covering Watford & surrounding areas</div>
+    <p>Clearing out your wardrobe but want to skip the hassle of selling everything yourself or dropping it off anywhere? We're here to help - we come to you, weigh your clothes and pay you on the spot. Easy!</p>
+    <a class="cta-btn" href="#" onclick="showPage('contact')">Get in touch →</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat-pill">💷 60p per kilo</div>
+    <div class="stat-pill">⚡ Often same or next day</div>
+    <div class="stat-pill">📦 We come to you</div>
+    <div class="stat-pill">💸 Paid instantly</div>
+  </div>
+
+  <div class="area-banner">
+    <div class="area-banner-inner">
+      <p>📍 We cover Watford & surrounding areas</p>
+      <span>Not sure if you're close enough? Just get in touch - we'll always do our best to help!</span>
+    </div>
+  </div>
+
+  <div class="section">
+
+    <div class="card">
+      <h2>🪜 How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Bag up your clothes</strong>
+            <span>Pop everything into bags - no need to sort or fold!</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Get in touch</strong>
+            <span>Drop us an email and we'll sort a collection time that works for you.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>We collect from your home</strong>
+            <span>No need to travel anywhere - we come straight to your door. Not sure if you're within our area? Pop us a message and we'll do what we can to help!</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <strong>Clothes are weighed on collection</strong>
+            <span>We weigh everything there and then so you can see exactly what you're getting.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-text">
+            <strong>You're paid instantly 🎉</strong>
+            <span>Payment sent straight away via PayPal or bank transfer - your choice.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>👚 What we take</h2>
+      <div class="take-grid">
+        <div class="take-box yes">
+          <h3>✅ We do take</h3>
+          <ul class="take-list">
+            <li>Women's clothing</li>
+            <li>Men's clothing</li>
+            <li>Children's clothing</li>
+            <li>Shoes & accessories</li>
+            <li>Clean & wearable condition</li>
+          </ul>
+        </div>
+        <div class="take-box no">
+          <h3>❌ We don't take</h3>
+          <ul class="take-list">
+            <li>Stained or damaged items</li>
+            <li>Heavily worn items</li>
+            <li>Underwear, swimwear or socks</li>
+            <li>Workwear or uniforms</li>
+          </ul>
+        </div>
+      </div>
+      <div class="not-sure">
+        🤔 Not sure if your items are suitable? Just send us a message with a photo and we'll let you know - no pressure!
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT & FAQ PAGE -->
+<div id="page-contact" class="page">
+
+  <div class="contact-hero">
+    <h1>👋 Get in touch!</h1>
+    <p>Ready for a clearout? Drop us an email and we'll get back to you quickly to arrange a collection.</p>
+    <a class="email-btn" href="/cdn-cgi/l/email-protection#b0d3dcdfc4d8d5c39ed3dcd5d1c2dfc5c4c3f0d7ddd1d9dc9ed3dfdd">📧 <span class="__cf_email__" data-cfemail="aecdc2c1dac6cbdd80cdc2cbcfdcc1dbdaddeec9c3cfc7c280cdc1c3">[email&#160;protected]</span></a>
+  </div>
+
+  <div class="section">
+    <div class="card">
+      <h2>❓ FAQs</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Where do you collect from?
+            <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            We're based in Watford and collect from Watford and the surrounding areas. If you're not sure whether you're too far, just drop us a message - we cover a wider area than you might think and we'll always do our best to help. We've collected from as far as 12 miles away before!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How quickly do you collect?
+            <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            We aim to be as flexible as possible! We often collect same day or next day, so if you want things gone quickly just let us know when you get in touch and we'll do our best to make it happen.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How much will I get?
+            <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            We pay 60p per kilo, weighed at collection. So the more you have, the more you earn! A typical black bin bag of clothes weighs around 8–12kg, so you could be looking at £5–£7 per bag. We weigh everything in front of you so it's completely transparent.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            How do you pay?
+            <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            We pay instantly via PayPal or bank transfer - whichever works best for you. Payment is sent as soon as we've weighed your clothes, so you won't be waiting around.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            What condition do clothes need to be in?
+            <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            Clothes need to be clean and in wearable condition - think items you'd be happy to see someone else wearing. We can't take anything stained, damaged, or heavily worn. We also don't take underwear, swimwear, socks, or workwear/uniforms. If you're unsure, just send us a photo and we'll let you know!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Is there a minimum amount?
+            <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            There's no strict minimum, but to make the trip worthwhile we'd generally recommend having at least a couple of bags ready. Drop us a message and we can chat through what you've got!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Do I need to do anything to prepare?
+            <span class="arrow">▾</span>
+          </div>
+          <div class="faq-a">
+            Just bag everything up in black bin bags and leave them ready for collection. No need to sort, fold or organise - we keep it as easy as possible for you!
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="sparkles">✨ 👗 ✨</div>
+  <p style="margin-top:8px;">Clothes Clearouts · Watford & surrounding areas</p>
+  <p style="margin-top:4px;"><a href="/cdn-cgi/l/email-protection#20434c4f544845530e434c4541524f55545360474d41494c0e434f4d"><span class="__cf_email__" data-cfemail="9dfef1f2e9f5f8eeb3fef1f8fceff2e8e9eeddfaf0fcf4f1b3fef2f0">[email&#160;protected]</span></a></p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classL
